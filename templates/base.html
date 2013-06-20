@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>{% block title %}Book Lists{% endblock %}</title>
+    {% block headers %}
+
+    {% endblock %}
+  </head>
+  <body>
+    <a href="{% url 'login' %}">Log In</a> &nbsp;
+    <a href="{% url 'register' %}">Register</a> &nbsp;
+    <a href="{% url 'profile' %}">Profile</a> &nbsp;
+    <a href="{% url 'logout' %}">Log Out</a> &nbsp;
+    <hr>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

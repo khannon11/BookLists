@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<br /> Welcome, {{ user.username }} <br />
+<a href="{% url 'add_book' %}">Add Book</a> <br />
+<a href="{% url 'add_rec' %}">Add Recommendation</a> <br />
+<a href="{% url 'add_review' %}">Add Review</a> <br />
+<h1>My Reviews</h1>
+  {% if reviews %}
+    <ul>
+      {% for review in reviews %}
+      <li> <a href="/review/{{ review.id }}">{{ review.book.title }}, Rating: {{ review.rating }} </a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    You haven't reviewed any books yet!
+  {% endif %}
+    
+
+<h1>Recommended For Me </h1>
+  {% if recs_for_me %}
+    <ul>
+      {% for rec_for_me in recs_for_me %}
+        <li> <a href="/rec/{{ rec_for_me.id }}">{{rec_for_me.book.title }} by {{ rec_for_me.rec_from.username }} </a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    No one has recommended a book for you yet!
+  {% endif %}
+
+<h1>My Recommendations </h1>
+  {% if recs_by_me %}
+    <ul>
+      {% for rec_by_me in recs_by_me %}
+        <li> <a href="/rec/{{rec_by_me.id }}">{{rec_by_me.book.title }} for {{ rec_by_me.rec_for.username }} </a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    You haven't recommended a book for anyone yet!
+  {% endif %}
+{% endblock %}

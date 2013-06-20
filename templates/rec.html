@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+  <a href="{% url 'profile' %}">Back to Profile</a>
+  <table>
+    <tr>
+      <td>
+        Book
+      </td>
+      <td>
+        {{ rec.book.title }} by {{ rec.book.author }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Recommended By
+      </td>
+      <td>
+        {{ rec.rec_from.username }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Recommended For
+      </td>
+      <td>
+        {{ rec.rec_for.username }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Review
+      </td>
+      <td>
+        {{ rec.text }}
+      </td>
+    </tr>
+{% endblock %}
